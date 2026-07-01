@@ -32,13 +32,14 @@
 ## 内容生产流程
 
 1. 选题：选择一个生活问题或常见概念。
-2. 提示词：AI 根据选题生成外部 LLM 文案提示词。
-3. 粗稿：创作者把提示词交给外部 LLM，得到标题、比喻、分镜、配文、正文、标签和风险提醒。
-4. 定稿：AI 对外部 LLM 粗稿做二次加工，检查 PRD 口径、通俗度、准确性边界和小红书翻页节奏。
-5. 生图方案：AI 整理每页画面描述和 GPT-image2 Prompt 草案，并保持角色、场景、风格一致。
-6. 作图：创作者按提示词生成图片。
-7. 发布：创作者配标题、正文、话题标签后发布。
-8. 复盘：记录数据和评论反馈，反哺选题池。
+2. 结构生成：AI 根据 `templates/algorithm-xhs-infographic-generator-template.md`，把算法名和生活例子拆成通用图文结构，不硬编码某一个场景。
+3. 提示词：AI 根据选题生成外部 LLM 文案提示词。
+4. 粗稿：创作者把提示词交给外部 LLM，得到标题、比喻、分镜、配文、正文、标签和风险提醒。
+5. 定稿：AI 对外部 LLM 粗稿做二次加工，检查 PRD 口径、通俗度、准确性边界和小红书翻页节奏。
+6. 生图方案：AI 整理每页画面描述和 GPT-image2 Prompt 草案，并保持角色、场景、风格一致。
+7. 作图：创作者按提示词生成图片。
+8. 发布：创作者配标题、正文、话题标签后发布。
+9. 复盘：记录数据和评论反馈，反哺选题池。
 
 ## 外部 LLM 协作流程
 
@@ -70,6 +71,7 @@
 - `README.md`：项目总说明、文件地图、内容生产流程和验证口径。
 - `AGENTS.md`：AI 协作约束、工程风格、项目专属红线和收口要求。
 - `templates/external-llm-copy-prompt-template.md`：根据选题生成通俗易懂小红书文案粗稿的外部 LLM 提示词模板。
+- `templates/algorithm-xhs-infographic-generator-template.md`：根据算法名和生活例子生成小红书算法科普图文结构，固定解释骨架，不固定具体场景。
 - `templates/humanize-copy-checklist.md`：去 AI 味文案检查清单，用于把顺滑但像说明书的文本改得更像真人表达。
 - `templates/image2-infographic-prompt-guide.md`：Image2 竖版信息图 Prompt 规则，用于控制信息结构、文字量、留白和风格一致性。
 - `prompts/`：按具体选题生成的外部 LLM 专用提示词。
@@ -79,6 +81,7 @@
 
 - `AGENTS.md`：AI 进入仓库后的第一入口。执行任务前必须读取本文件和 `README.md`。
 - `xiaohongshu-cute-knowledge-prd.md`：V1 定版 PRD。账号定位、首篇主题、视觉风格、渠道、画幅和页数规则以此为准。
+- `templates/algorithm-xhs-infographic-generator-template.md`：当需要把某个算法和生活例子转成步骤化图文结构时使用；生活例子可替换，不能把排课、座位等单一场景写死。
 - `templates/external-llm-copy-prompt-template.md`：当用户给出选题时，优先用它生成外部 LLM 提示词。
 - `templates/humanize-copy-checklist.md`：每次定稿前必须读取，用来降低 AI 腔和八股感。
 - `templates/image2-infographic-prompt-guide.md`：每次生成或改写 Image2 Prompt 前必须读取。
